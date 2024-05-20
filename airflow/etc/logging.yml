@@ -1,0 +1,67 @@
+---
+version: 1
+disable_existing_loggers: False
+formatters:
+  simple:
+    format: "%(asctime)s %(name)s:%(pathname)s:%(funcName)s:%(lineno)d [%(levelname)s] - %(message)s"
+
+handlers:
+  console:
+    class: logging.StreamHandler
+    level: DEBUG
+    formatter: simple
+    stream: ext://sys.stdout
+
+  database_audit_handler:
+    class: logging.handlers.TimedRotatingFileHandler
+    level: INFO
+    formatter: simple
+    when: D
+    filename: "/usr/local/airflow/logs/monitor/db_audit"
+    backupCount: 14
+    encoding: utf8
+
+  masking_audit_handler:
+    class: logging.handlers.TimedRotatingFileHandler
+    level: INFO
+    formatter: simple
+    when: D
+    filename: "/usr/local/airflow/logs/monitor/masking_audit"
+    backupCount: 14
+    encoding: utf8
+
+
+  default_audit_handler:
+    class: logging.handlers.TimedRotatingFileHandler
+    level: INFO
+    formatter: simple
+    when: D
+    filename: "/usr/local/airflow/logs/monitor/audit"
+    backupCount: 14
+    encoding: utf8
+
+loggers:
+  test:
+    level: DEBUG
+    handlers: [console]
+    propagate: no
+
+  db_audit:
+    level: INFO
+    handlers: [database_audit_handler]
+
+  masking_audit:
+    level: INFO
+    handlers: [masking_audit_handler]
+
+  schema_audit:
+    level: INFO
+    handlers: [default_audit_handler]
+
+  audit:
+    level: INFO
+    handlers: [default_audit_handler]
+
+root:
+  level: INFO
+  handlers: [console]
