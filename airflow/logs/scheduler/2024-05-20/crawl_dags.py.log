@@ -20536,3 +20536,251 @@ Traceback (most recent call last):
 ModuleNotFoundError: No module named 'utils'
 [2024-05-20T18:51:41.383+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/crawl_dags.py
 [2024-05-20T18:51:41.407+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_dags.py took 0.057 seconds
+[2024-05-20T20:32:23.651+0000] {processor.py:161} INFO - Started process (PID=29) to work on /opt/airflow/dags/crawl_dags.py
+[2024-05-20T20:32:23.652+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_dags.py for tasks to queue
+[2024-05-20T20:32:23.654+0000] {logging_mixin.py:188} INFO - [2024-05-20T20:32:23.654+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_dags.py
+[2024-05-20T20:32:46.452+0000] {logging_mixin.py:188} INFO - [2024-05-20T20:32:46.352+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/crawl_dags.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/crawl_dags.py", line 76, in <module>
+    step_start = task_start(dag)
+                 ^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/crawl_dags.py", line 47, in task_start
+    operator = PythonOperator(
+               ^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 467, in apply_defaults
+    raise AirflowException(f"missing keyword argument {missing_args.pop()!r}")
+airflow.exceptions.AirflowException: missing keyword argument 'python_callable'
+[2024-05-20T20:32:46.455+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/crawl_dags.py
+[2024-05-20T20:32:46.475+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_dags.py took 22.829 seconds
+[2024-05-20T20:33:17.034+0000] {processor.py:161} INFO - Started process (PID=43) to work on /opt/airflow/dags/crawl_dags.py
+[2024-05-20T20:33:17.035+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_dags.py for tasks to queue
+[2024-05-20T20:33:17.038+0000] {logging_mixin.py:188} INFO - [2024-05-20T20:33:17.037+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_dags.py
+[2024-05-20T20:33:17.640+0000] {logging_mixin.py:188} INFO - [2024-05-20T20:33:17.613+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/crawl_dags.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/crawl_dags.py", line 76, in <module>
+    step_start = task_start(dag)
+                 ^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/crawl_dags.py", line 47, in task_start
+    operator = PythonOperator(
+               ^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 467, in apply_defaults
+    raise AirflowException(f"missing keyword argument {missing_args.pop()!r}")
+airflow.exceptions.AirflowException: missing keyword argument 'python_callable'
+[2024-05-20T20:33:17.643+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/crawl_dags.py
+[2024-05-20T20:33:17.670+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_dags.py took 0.640 seconds
+[2024-05-20T20:33:47.883+0000] {processor.py:161} INFO - Started process (PID=51) to work on /opt/airflow/dags/crawl_dags.py
+[2024-05-20T20:33:47.884+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_dags.py for tasks to queue
+[2024-05-20T20:33:47.886+0000] {logging_mixin.py:188} INFO - [2024-05-20T20:33:47.885+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_dags.py
+[2024-05-20T20:33:48.361+0000] {logging_mixin.py:188} INFO - [2024-05-20T20:33:48.355+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/crawl_dags.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/crawl_dags.py", line 76, in <module>
+    step_start = task_start(dag)
+                 ^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/crawl_dags.py", line 47, in task_start
+    operator = PythonOperator(
+               ^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 467, in apply_defaults
+    raise AirflowException(f"missing keyword argument {missing_args.pop()!r}")
+airflow.exceptions.AirflowException: missing keyword argument 'python_callable'
+[2024-05-20T20:33:48.363+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/crawl_dags.py
+[2024-05-20T20:33:48.398+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_dags.py took 0.520 seconds
+[2024-05-20T20:34:18.626+0000] {processor.py:161} INFO - Started process (PID=59) to work on /opt/airflow/dags/crawl_dags.py
+[2024-05-20T20:34:18.628+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_dags.py for tasks to queue
+[2024-05-20T20:34:18.631+0000] {logging_mixin.py:188} INFO - [2024-05-20T20:34:18.630+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_dags.py
+[2024-05-20T20:34:19.231+0000] {logging_mixin.py:188} INFO - [2024-05-20T20:34:19.228+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/crawl_dags.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/crawl_dags.py", line 76, in <module>
+    step_start = task_start(dag)
+                 ^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/crawl_dags.py", line 47, in task_start
+    operator = PythonOperator(
+               ^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 467, in apply_defaults
+    raise AirflowException(f"missing keyword argument {missing_args.pop()!r}")
+airflow.exceptions.AirflowException: missing keyword argument 'python_callable'
+[2024-05-20T20:34:19.235+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/crawl_dags.py
+[2024-05-20T20:34:19.255+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_dags.py took 0.646 seconds
+[2024-05-20T20:34:49.447+0000] {processor.py:161} INFO - Started process (PID=68) to work on /opt/airflow/dags/crawl_dags.py
+[2024-05-20T20:34:49.448+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_dags.py for tasks to queue
+[2024-05-20T20:34:49.450+0000] {logging_mixin.py:188} INFO - [2024-05-20T20:34:49.449+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_dags.py
+[2024-05-20T20:34:50.094+0000] {logging_mixin.py:188} INFO - [2024-05-20T20:34:50.089+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/crawl_dags.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/crawl_dags.py", line 76, in <module>
+    step_start = task_start(dag)
+                 ^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/crawl_dags.py", line 47, in task_start
+    operator = PythonOperator(
+               ^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 467, in apply_defaults
+    raise AirflowException(f"missing keyword argument {missing_args.pop()!r}")
+airflow.exceptions.AirflowException: missing keyword argument 'python_callable'
+[2024-05-20T20:34:50.096+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/crawl_dags.py
+[2024-05-20T20:34:50.115+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_dags.py took 0.673 seconds
+[2024-05-20T20:35:20.321+0000] {processor.py:161} INFO - Started process (PID=76) to work on /opt/airflow/dags/crawl_dags.py
+[2024-05-20T20:35:20.322+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_dags.py for tasks to queue
+[2024-05-20T20:35:20.324+0000] {logging_mixin.py:188} INFO - [2024-05-20T20:35:20.324+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_dags.py
+[2024-05-20T20:35:20.814+0000] {logging_mixin.py:188} INFO - [2024-05-20T20:35:20.811+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/crawl_dags.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/crawl_dags.py", line 76, in <module>
+    step_start = task_start(dag)
+                 ^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/crawl_dags.py", line 47, in task_start
+    operator = PythonOperator(
+               ^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 467, in apply_defaults
+    raise AirflowException(f"missing keyword argument {missing_args.pop()!r}")
+airflow.exceptions.AirflowException: missing keyword argument 'python_callable'
+[2024-05-20T20:35:20.816+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/crawl_dags.py
+[2024-05-20T20:35:20.835+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_dags.py took 0.519 seconds
+[2024-05-20T20:35:27.416+0000] {processor.py:161} INFO - Started process (PID=78) to work on /opt/airflow/dags/crawl_dags.py
+[2024-05-20T20:35:27.417+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_dags.py for tasks to queue
+[2024-05-20T20:35:27.419+0000] {logging_mixin.py:188} INFO - [2024-05-20T20:35:27.419+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_dags.py
+[2024-05-20T20:35:27.939+0000] {logging_mixin.py:188} INFO - Start task executed
+[2024-05-20T20:35:27.946+0000] {logging_mixin.py:188} INFO - [2024-05-20T20:35:27.940+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/crawl_dags.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/crawl_dags.py", line 77, in <module>
+    step_start = task_start(dag)
+                 ^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/crawl_dags.py", line 54, in task_start
+    operator = PythonOperator(
+               ^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 484, in apply_defaults
+    result = func(self, **kwargs, default_args=default_args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 222, in __init__
+    raise AirflowException("`python_callable` param must be callable")
+airflow.exceptions.AirflowException: `python_callable` param must be callable
+[2024-05-20T20:35:27.947+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/crawl_dags.py
+[2024-05-20T20:35:27.966+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_dags.py took 0.556 seconds
+[2024-05-20T20:35:49.051+0000] {processor.py:161} INFO - Started process (PID=86) to work on /opt/airflow/dags/crawl_dags.py
+[2024-05-20T20:35:49.052+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_dags.py for tasks to queue
+[2024-05-20T20:35:49.055+0000] {logging_mixin.py:188} INFO - [2024-05-20T20:35:49.054+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_dags.py
+[2024-05-20T20:35:49.633+0000] {logging_mixin.py:188} INFO - [2024-05-20T20:35:49.629+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/crawl_dags.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/crawl_dags.py", line 76, in <module>
+    step_start = task_start(dag)
+                 ^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/crawl_dags.py", line 47, in task_start
+    operator = PythonOperator(
+               ^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 467, in apply_defaults
+    raise AirflowException(f"missing keyword argument {missing_args.pop()!r}")
+airflow.exceptions.AirflowException: missing keyword argument 'python_callable'
+[2024-05-20T20:35:49.635+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/crawl_dags.py
+[2024-05-20T20:35:49.652+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_dags.py took 0.608 seconds
+[2024-05-20T20:36:04.787+0000] {processor.py:161} INFO - Started process (PID=88) to work on /opt/airflow/dags/crawl_dags.py
+[2024-05-20T20:36:04.804+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_dags.py for tasks to queue
+[2024-05-20T20:36:04.806+0000] {logging_mixin.py:188} INFO - [2024-05-20T20:36:04.806+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_dags.py
+[2024-05-20T20:36:05.386+0000] {logging_mixin.py:188} INFO - [2024-05-20T20:36:05.370+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/crawl_dags.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/crawl_dags.py", line 77, in <module>
+    step_start = task_start(dag)
+                 ^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/crawl_dags.py", line 49, in task_start
+    python_callable=start_task_callable,  # The callable to execute
+                    ^^^^^^^^^^^^^^^^^^^
+NameError: name 'start_task_callable' is not defined
+[2024-05-20T20:36:05.397+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/crawl_dags.py
+[2024-05-20T20:36:05.457+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_dags.py took 0.674 seconds
+[2024-05-20T20:36:35.732+0000] {processor.py:161} INFO - Started process (PID=96) to work on /opt/airflow/dags/crawl_dags.py
+[2024-05-20T20:36:35.733+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_dags.py for tasks to queue
+[2024-05-20T20:36:35.735+0000] {logging_mixin.py:188} INFO - [2024-05-20T20:36:35.734+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_dags.py
+[2024-05-20T20:36:36.311+0000] {logging_mixin.py:188} INFO - [2024-05-20T20:36:36.303+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/crawl_dags.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/crawl_dags.py", line 77, in <module>
+    step_start = task_start(dag)
+                 ^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/crawl_dags.py", line 49, in task_start
+    python_callable=start_task_callable,  # The callable to execute
+                    ^^^^^^^^^^^^^^^^^^^
+NameError: name 'start_task_callable' is not defined
+[2024-05-20T20:36:36.316+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/crawl_dags.py
+[2024-05-20T20:36:36.334+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_dags.py took 0.606 seconds
+[2024-05-20T20:36:46.460+0000] {processor.py:161} INFO - Started process (PID=104) to work on /opt/airflow/dags/crawl_dags.py
+[2024-05-20T20:36:46.461+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_dags.py for tasks to queue
+[2024-05-20T20:36:46.464+0000] {logging_mixin.py:188} INFO - [2024-05-20T20:36:46.463+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_dags.py
+[2024-05-20T20:36:47.049+0000] {logging_mixin.py:188} INFO - Start task!
+[2024-05-20T20:36:47.055+0000] {logging_mixin.py:188} INFO - [2024-05-20T20:36:47.050+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/crawl_dags.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/crawl_dags.py", line 78, in <module>
+    step_start = task_start(dag)
+                 ^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/crawl_dags.py", line 47, in task_start
+    operator = PythonOperator(
+               ^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 484, in apply_defaults
+    result = func(self, **kwargs, default_args=default_args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 222, in __init__
+    raise AirflowException("`python_callable` param must be callable")
+airflow.exceptions.AirflowException: `python_callable` param must be callable
+[2024-05-20T20:36:47.056+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/crawl_dags.py
+[2024-05-20T20:36:47.077+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_dags.py took 0.624 seconds
+[2024-05-20T20:37:17.256+0000] {processor.py:161} INFO - Started process (PID=112) to work on /opt/airflow/dags/crawl_dags.py
+[2024-05-20T20:37:17.257+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_dags.py for tasks to queue
+[2024-05-20T20:37:17.260+0000] {logging_mixin.py:188} INFO - [2024-05-20T20:37:17.259+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_dags.py
+[2024-05-20T20:37:17.704+0000] {logging_mixin.py:188} INFO - Start task!
+[2024-05-20T20:37:17.710+0000] {logging_mixin.py:188} INFO - [2024-05-20T20:37:17.705+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/crawl_dags.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/crawl_dags.py", line 78, in <module>
+    step_start = task_start(dag)
+                 ^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/crawl_dags.py", line 47, in task_start
+    operator = PythonOperator(
+               ^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 484, in apply_defaults
+    result = func(self, **kwargs, default_args=default_args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 222, in __init__
+    raise AirflowException("`python_callable` param must be callable")
+airflow.exceptions.AirflowException: `python_callable` param must be callable
+[2024-05-20T20:37:17.711+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/crawl_dags.py
+[2024-05-20T20:37:17.735+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_dags.py took 0.484 seconds

@@ -46,6 +46,7 @@ class crawl_match_info:
 def task_start(dag):
     operator = PythonOperator(
         task_id='start',
+        python_callable=print("Start task!"),  # The callable to execute
         dag=dag
     )
     return operator
@@ -53,6 +54,7 @@ def task_start(dag):
 def task_end(dag):
     operator = PythonOperator(
         task_id='end',
+        python_callable=print("End task!"),  # The callable to execute
         dag=dag
     )
     return operator
