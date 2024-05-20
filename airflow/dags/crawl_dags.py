@@ -17,6 +17,7 @@ class crawl_match_info:
 
         if status_code != 200:  # Compare status code as an integer
             print(f"Error code: {status_code}. Stop jobs!")
+            return None
         else:
             match_in_day = response.json()
             match_in_day = match_in_day['events']
@@ -43,21 +44,12 @@ class crawl_match_info:
             table_name = 'matchday'
             df.to_sql(table_name, engine, if_exists='append', index=False)
 
-def task_start(dag):
-    operator = PythonOperator(
-        task_id='start',
-        python_callable=print("Start task!"),  # The callable to execute
-        dag=dag
-    )
-    return operator
-
-def task_end(dag):
-    operator = PythonOperator(
-        task_id='end',
-        python_callable=print("End task!"),  # The callable to execute
-        dag=dag
-    )
-    return operator
+def crawl_data_callable(to_date, **context):
+    headers = {
+        'user-agent': 'Mozilla/5.0 (Linux; Android) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.109 Safari/537.36 CrKey/1.54.248666',
+    }
+    crawler = crawl_match_info(to_date, headers)
+    crawler.fetch_data()
 
 dag = DAG(
     "ETL_SofaScore_matchday_daily",
@@ -71,13 +63,10 @@ dag = DAG(
     description="Crawl Match info in last day",
     schedule_interval=timedelta(days=1),
     start_date=datetime(2024,5,9),
+    end_date=datetime(2024,5,10),
     tags=["ducnm7"]
 )
 
-# step 0: start dag
-step_start = task_start(dag)
-# Final: end dag
-step_end = task_end(dag)
 
 crawl_data = PythonOperator(
     task_id="crawl_data",
@@ -86,4 +75,4 @@ crawl_data = PythonOperator(
     dag=dag
 )
 
-step_start >> crawl_data >> step_end
+crawl_data
