@@ -16,10 +16,8 @@ class CrawlMatchInfo:
         url = f"https://www.sofascore.com/api/v1/sport/football/scheduled-events/{self.date}"
         response = requests.get(url)
         status_code = response.status_code
-
         if status_code != 200:
             print(f"Error code: {status_code}. Stop jobs!")
-            return None
         else:
             match_in_day = response.json()
             match_in_day = match_in_day['events']
@@ -28,11 +26,14 @@ class CrawlMatchInfo:
             df_matchday = pd.json_normalize(match_in_day)
             df_matchday.rename(columns=lambda col: col.replace('.', '_'), inplace=True)
             df_matchday.rename(columns={"id": "match_id"}, inplace=True)
-            df = df_matchday[df_matchday['tournament_category_sport_name'] == 'Football']
+            df_football = df_matchday[df_matchday['tournament_category_sport_name'] == 'Football']
+
+            # Print the combined DataFrame
+            df = pd.concat([df_football], ignore_index=True)
             print("Dataframe is here!!!")
             print(df)
             list_match_id = df["match_id"].astype(str).tolist()
-            list_customId = df["customID"]
+            list_customId = df["customId"]
             self.export(log_name, df)
 
             # Fetch and export shotmap data
@@ -56,11 +57,19 @@ class CrawlMatchInfo:
             if match_manager_df is not None:
                 self.export("match_manager", match_manager_df)
 
+            match_statistics_df = self.match_statistics(list_match_id)
+            if match_statistics_df is not None:
+                self.export("match_statistics", match_statistics_df)
+
+            match_summary_df = self.match_summary(list_match_id)
+            if match_summary_df is not None:
+                self.export("match_statistics", match_summary_df)
+
     def shotmap(self, list_match_id):
         shotmap_data = []
 
         for match_id in list_match_id:
-            url = f"https://www.sofascore.com/api/v1/event/"+match_id+"/shotmap"
+            url = f"https://www.sofascore.com/api/v1/event/{match_id}/shotmap"
             try:
                 response = requests.get(url)
                 status_code = response.status_code
@@ -69,10 +78,23 @@ class CrawlMatchInfo:
                     for event in data['shotmap']:
                         event_data = event.copy()  # Create a copy of the event dictionary
                         event_data['match_id'] = match_id  # Add match_id to the copy
+                        event_data['status_code'] = status_code  # Add status_code to the copy
                         shotmap_data.append(event_data)  # Append the modified event data
                 else:
+                    # Append a row with all null values and the status_code
+                    shotmap_data.append({
+                        'match_id': match_id,
+                        'status_code': status_code,
+                        **{key: None for key in data['shotmap'][0].keys()}
+                    })
                     print(f"Failed to fetch data for match ID {match_id}. Status code: {status_code}")
             except Exception as e:
+                # Append a row with all null values and the status_code
+                shotmap_data.append({
+                    'match_id': match_id,
+                    'status_code': None,
+                    **{key: None for key in data['shotmap'][0].keys()}
+                })
                 print(f"An error occurred for match ID {match_id}: {e}")
             time.sleep(1)
 
@@ -80,43 +102,46 @@ class CrawlMatchInfo:
             # Normalize the nested JSON data
             df_shotmap = pd.json_normalize(shotmap_data)
             df_shotmap.rename(columns=lambda col: col.replace('.', '_'), inplace=True)
-            return df_shotmap
+            df_shotmap
         else:
-            return None
+            print("No data fetched.")
 
     def match_event(self, list_customId):
         event_data = []
 
         for customId in list_customId:
-            url = f"https://www.sofascore.com/api/v1/event/"+customId+"/h2h/events"
+            url = f"https://www.sofascore.com/api/v1/event/{customId}/h2h/events"
             try:
                 response = requests.get(url)
                 status_code = response.status_code
                 if status_code == 200:
                     data = response.json()
                     for event in data['events']:
-                        event_data = event.copy()  # Create a copy of the event dictionary
-                        event_data.rename(columns={"id": "match_id"}, inplace=True)
-                        event_data.append(event_data)  # Append the modified event data
+                        event_copy = event.copy()  # Create a copy of the event dictionary
+                        event_copy['customId'] = customId  # Add match_id to the event data
+                        event_copy['status_code'] = status_code  # Add status_code to the event data
+                        event_data.append(event_copy)  # Append the modified event data
                 else:
                     print(f"Failed to fetch data for match ID {customId}. Status code: {status_code}")
+                    event_data.append({'match_id': customId, 'status_code': status_code})
             except Exception as e:
                 print(f"An error occurred for match ID {customId}: {e}")
+                event_data.append({'match_id': customId, 'status_code': None})
             time.sleep(1)
 
         if event_data:
             # Normalize the nested JSON data
             df_match_event = pd.json_normalize(event_data)
             df_match_event.rename(columns=lambda col: col.replace('.', '_'), inplace=True)
-            return df_match_event
+            df_match_event
         else:
-            return None
+            print("No data fetched.")
 
     def match_incident(self, list_match_id):
         match_incident_data = []
 
         for match_id in list_match_id:
-            url = f"https://www.sofascore.com/api/v1/event/"+match_id+"/incidents"
+            url = f"https://www.sofascore.com/api/v1/event/{match_id}/incidents"
             try:
                 response = requests.get(url)
                 status_code = response.status_code
@@ -128,6 +153,12 @@ class CrawlMatchInfo:
                         match_incident_data.append(event_data)  # Append the modified event data
                 else:
                     print(f"Failed to fetch data for match ID {match_id}. Status code: {status_code}")
+                    # Add null values for all columns and add status_code and match_id columns
+                    null_event_data = {'match_id': match_id, 'status_code': status_code}
+                    for key in match_incident_data[0].keys():
+                        if key not in ['match_id', 'status_code']:
+                            null_event_data[key] = None
+                    match_incident_data.append(null_event_data)
             except Exception as e:
                 print(f"An error occurred for match ID {match_id}: {e}")
             time.sleep(1)
@@ -136,17 +167,19 @@ class CrawlMatchInfo:
             # Normalize the nested JSON data
             df_match_incident = pd.json_normalize(match_incident_data)
             df_match_incident.rename(columns=lambda col: col.replace('.', '_'), inplace=True)
-            return df_match_incident
+            df_match_incident
         else:
-            return None
+            print("No data fetched.")
 
     def match_lineups(self, list_match_id):
         match_lineups_data = []
+
         for match_id in list_match_id:
             url = f"https://www.sofascore.com/api/v1/event/{match_id}/lineups"
             try:
                 response = requests.get(url)
                 status_code = response.status_code
+
                 if status_code == 200:
                     data = response.json()
                     for player in data["home"]["players"]:
@@ -159,12 +192,20 @@ class CrawlMatchInfo:
                             "position": player["position"],
                             "substitute": player["substitute"]
                         })
+                        player_info['match_id'] = match_id  # Add match_id to each player_info
                         match_lineups_data.append(player_info)
-
-                    df_lineups = pd.DataFrame(match_lineups_data)
-                    df_lineups['match_id'] = match_id  # Add match_id to the copy
+                else:
+                    # For status_code != 200, add a row with all null values and add status_code and match_id
+                    null_player_info = {key: None for key in match_lineups_data[0].keys()} if match_lineups_data else {}
+                    null_player_info['status_code'] = status_code
+                    null_player_info['match_id'] = match_id
+                    match_lineups_data.append(null_player_info)
             except Exception as e:
-                print(f"An error occurred: {e}")
+                print(f"An error occurred for match ID {match_id}: {e}")
+
+        df_lineups = pd.DataFrame(match_lineups_data)
+        df_lineups
+
 
     def match_manager(self, list_match_id):
         match_managers_data = []
@@ -176,17 +217,26 @@ class CrawlMatchInfo:
                 if status_code == 200:
                     data = response.json()
                     match_managers_data.append(data)
-                    df_manager = pd.json_normalize(match_managers_data, sep='_')
-                    df_manager['match_id'] = match_id
+                    # Extract column names if not already extracted
+                    if not match_managers_columns:
+                        match_managers_columns = list(data.keys())
                 else:
                     print(f"Failed to fetch data for match ID {match_id}, status code: {status_code}")
+                    # Create a dictionary with null values and append it to match_managers_data
+                    null_data = {column: None for column in match_managers_columns}  # assuming match_managers_columns contains all column names
+                    null_data['status_code'] = status_code
+                    null_data['match_id'] = match_id
+                    match_managers_data.append(null_data)
             except Exception as e:
                 print(f"An error occurred for match ID {match_id}: {e}")
+
+        # Normalize the data and create DataFrame
+        df_manager = pd.json_normalize(match_managers_data, sep='_')
+        df_manager
 
     def match_statistics(self, list_match_id):
         match_statistics_data = []
 
-        # for match_id in list_match_id:
         for match_id in list_match_id:
             url = f"https://www.sofascore.com/api/v1/event/{match_id}/statistics"
             try:
@@ -194,11 +244,9 @@ class CrawlMatchInfo:
                 status_code = response.status_code
                 if status_code == 200:
                     data = response.json()
-                    # Assuming 'statistics' is a list containing match statistics
                     for event in data['statistics']:
                         for group in event['groups']:
                             for stat_item in group['statisticsItems']:
-                                # Append extracted data to the match_statistics_data list
                                 match_statistics_data.append({
                                     'period': event['period'],
                                     'groupName': group['groupName'],
@@ -211,21 +259,80 @@ class CrawlMatchInfo:
                                     'homeValue': stat_item['homeValue'],
                                     'awayValue': stat_item['awayValue'],
                                     'renderType': stat_item['renderType'],
-                                    'key': stat_item['key']
+                                    'key': stat_item['key'],
+                                    'status_code': status_code,
+                                    'match_id': match_id
                                 })
-                    df_match_statistics = pd.json_normalize(match_statistics_data)
-                    df_match_statistics['match_id'] = match_id
                 else:
-                    # Print an error message if the request fails
+                    # Add null values for all columns
+                    match_statistics_data.append({
+                        'period': None,
+                        'groupName': None,
+                        'name': None,
+                        'home': None,
+                        'away': None,
+                        'compareCode': None,
+                        'statisticsType': None,
+                        'valueType': None,
+                        'homeValue': None,
+                        'awayValue': None,
+                        'renderType': None,
+                        'key': None,
+                        'status_code': status_code,
+                        'match_id': match_id
+                    })
                     print(f"Failed to fetch data for match ID {match_id}. Status code: {status_code}")
             except requests.exceptions.RequestException as e:
-                # Handle specific exceptions related to requests
                 print(f"An error occurred for match ID {match_id}: {e}")
 
-            # Convert match statistics data to a DataFrame if data was fetched successfully
-            # if df_match_statistics:
-            #     df_match_statistics.rename(columns=lambda col: col.replace('.', '_'), inplace=True)
+        df_match_statistics = pd.DataFrame(match_statistics_data)
+        df_match_statistics
 
+    def match_summary(self, list_match_id):
+        match_summary_data = []
+        for match_id in list_match_id:
+            url = f"https://www.sofascore.com/api/v1/event/{match_id}/best-players/summary"
+            try:
+                response = requests.get(url)
+                status_code = response.status_code
+                if status_code == 200:
+                    data = response.json()
+                    for player in data['bestHomeTeamPlayers']:
+                        player_data = player.copy()
+                        player_data['team'] = 'home'
+                        player_data['match_id'] = match_id
+                        match_summary_data.append(player_data)
+                    for player in data['bestAwayTeamPlayers']:
+                        player_data = player.copy()
+                        player_data['team'] = 'away'
+                        player_data['match_id'] = match_id
+                        match_summary_data.append(player_data)
+                else:
+                    # Add a row with all null values except for status_code and match_id
+                    match_summary_data.append({
+                        'value': None, 'label': None, 'player_name': None, 'player_slug': None, 'player_shortName': None,
+                        'player_position': None, 'player_jerseyNumber': None, 'player_userCount': None, 'player_id': None,
+                        'player_marketValueCurrency': None, 'player_dateOfBirthTimestamp': None,
+                        'player_fieldTranslations_nameTranslation_ar': None,
+                        'player_fieldTranslations_shortNameTranslation_ar': None, 'team': None, 'match_id': match_id,
+                        'status_code': status_code
+                    })
+            except Exception as e:
+                print(f"An error occurred for match ID {match_id}: {e}")
+                # Add a row with all null values except for status_code and match_id in case of an exception
+                match_summary_data.append({
+                    'value': None, 'label': None, 'player_name': None, 'player_slug': None, 'player_shortName': None,
+                    'player_position': None, 'player_jerseyNumber': None, 'player_userCount': None, 'player_id': None,
+                    'player_marketValueCurrency': None, 'player_dateOfBirthTimestamp': None,
+                    'player_fieldTranslations_nameTranslation_ar': None,
+                    'player_fieldTranslations_shortNameTranslation_ar': None, 'team': None, 'match_id': match_id,
+                    'status_code': status_code
+                })
+
+        if match_summary_data:
+            df_summary = pd.json_normalize(match_summary_data, sep='_')
+            df_summary.rename(columns=lambda col: col.replace('.', '_'), inplace=True)
+            df_summary
         else:
             print("No data fetched.")
 
