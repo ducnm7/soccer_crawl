@@ -7,7 +7,7 @@ from datetime import datetime, timedelta
 from airflow import DAG
 from airflow.operators.python import PythonOperator
 
-class CrawlMatchInfo:
+class CrawlTeamInfo:
     def __init__(self, date):
         self.date = date
 
@@ -34,33 +34,33 @@ class CrawlMatchInfo:
             list_customId = df["customId"]
             self.export(log_name, df)
 
-            # shotmap_df = self.shotmap(list_match_id)
-            # if shotmap_df is not None:
-            #     self.export("shotmap", shotmap_df)
-            #
-            # match_event_df = self.match_event(list_customId)
-            # if match_event_df is not None:
-            #     self.export("match_event", match_event_df)
-            #
-            # match_incident_df = self.match_incident(list_match_id)
-            # if match_incident_df is not None:
-            #     self.export("match_incident", match_incident_df)
-            #
-            # match_lineups_df = self.match_lineups(list_match_id)
-            # if match_lineups_df is not None:
-            #     self.export("match_lineups", match_lineups_df)
-            #
-            # match_manager_df = self.match_manager(list_match_id)
-            # if match_manager_df is not None:
-            #     self.export("match_manager", match_manager_df)
-            #
-            # match_statistics_df = self.match_statistics(list_match_id)
-            # if match_statistics_df is not None:
-            #     self.export("match_statistics", match_statistics_df)
-            #
-            # match_summary_df = self.match_summary(list_match_id)
-            # if match_summary_df is not None:
-            #     self.export("match_summary", match_summary_df)
+            shotmap_df = self.shotmap(list_match_id)
+            if shotmap_df is not None:
+                self.export("shotmap", shotmap_df)
+
+            match_event_df = self.match_event(list_customId)
+            if match_event_df is not None:
+                self.export("match_event", match_event_df)
+
+            match_incident_df = self.match_incident(list_match_id)
+            if match_incident_df is not None:
+                self.export("match_incident", match_incident_df)
+
+            match_lineups_df = self.match_lineups(list_match_id)
+            if match_lineups_df is not None:
+                self.export("match_lineups", match_lineups_df)
+
+            match_manager_df = self.match_manager(list_match_id)
+            if match_manager_df is not None:
+                self.export("match_manager", match_manager_df)
+
+            match_statistics_df = self.match_statistics(list_match_id)
+            if match_statistics_df is not None:
+                self.export("match_statistics", match_statistics_df)
+
+            match_summary_df = self.match_summary(list_match_id)
+            if match_summary_df is not None:
+                self.export("match_summary", match_summary_df)
 
     def shotmap(self, list_match_id):
         shotmap_data = []
