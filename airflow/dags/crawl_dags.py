@@ -432,6 +432,6 @@ crawl_data = PythonOperator(
     dag=dag
 )
 
-step_start >> crawl_data >> [crawl_shotmap, crawl_match_event, crawl_match_incidents,
-                             crawl_match_lineups, crawl_match_statistics, crawl_match_summary,
-                             crawl_match_manager] >>step_end
+# step_start >> crawl_data >> [crawl_shotmap, crawl_match_event, crawl_match_incidents,
+#                              crawl_match_lineups, crawl_match_statistics, crawl_match_summary,
+#                              crawl_match_manager] >>step_end
