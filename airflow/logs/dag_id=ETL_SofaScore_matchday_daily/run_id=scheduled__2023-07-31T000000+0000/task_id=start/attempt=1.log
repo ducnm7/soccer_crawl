@@ -1,0 +1,208 @@
+[2024-07-27T13:20:50.317+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-07-27T13:20:50.336+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: ETL_SofaScore_Matchday_daily.start scheduled__2023-07-31T00:00:00+00:00 [queued]>
+[2024-07-27T13:20:50.346+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: ETL_SofaScore_Matchday_daily.start scheduled__2023-07-31T00:00:00+00:00 [queued]>
+[2024-07-27T13:20:50.347+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 2
+[2024-07-27T13:20:50.362+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): start> on 2023-07-31 00:00:00+00:00
+[2024-07-27T13:20:50.368+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=69) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-07-27T13:20:50.372+0000] {standard_task_runner.py:63} INFO - Started process 73 to run task
+[2024-07-27T13:20:50.370+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'ETL_SofaScore_Matchday_daily', 'start', 'scheduled__2023-07-31T00:00:00+00:00', '--job-id', '273', '--raw', '--subdir', 'DAGS_FOLDER/crawl_dags.py', '--cfg-path', '/tmp/tmp5c2a_bsy']
+[2024-07-27T13:20:50.374+0000] {standard_task_runner.py:91} INFO - Job 273: Subtask start
+[2024-07-27T13:20:50.432+0000] {task_command.py:426} INFO - Running <TaskInstance: ETL_SofaScore_Matchday_daily.start scheduled__2023-07-31T00:00:00+00:00 [running]> on host fde3e54b98e9
+[2024-07-27T13:20:50.527+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='nguyenmduc2407@gmail.com' AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='ETL_SofaScore_Matchday_daily' AIRFLOW_CTX_TASK_ID='start' AIRFLOW_CTX_EXECUTION_DATE='2023-07-31T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-07-31T00:00:00+00:00'
+[2024-07-27T13:20:50.529+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-07-27T13:20:50.579+0000] {logging_mixin.py:188} INFO - Start task executed!
+[2024-07-27T13:20:50.580+0000] {python.py:237} INFO - Done. Returned value was: None
+[2024-07-27T13:20:50.581+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-07-27T13:20:50.595+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=ETL_SofaScore_Matchday_daily, task_id=start, run_id=scheduled__2023-07-31T00:00:00+00:00, execution_date=20230731T000000, start_date=20240727T132050, end_date=20240727T132050
+[2024-07-27T13:20:50.628+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-07-27T13:20:50.668+0000] {taskinstance.py:3498} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2024-07-27T13:20:50.671+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2024-07-27T13:30:56.744+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-07-27T13:30:56.802+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: ETL_SofaScore_Matchday_daily.start scheduled__2023-07-31T00:00:00+00:00 [queued]>
+[2024-07-27T13:30:56.823+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: ETL_SofaScore_Matchday_daily.start scheduled__2023-07-31T00:00:00+00:00 [queued]>
+[2024-07-27T13:30:56.824+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 2
+[2024-07-27T13:30:57.112+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): start> on 2023-07-31 00:00:00+00:00
+[2024-07-27T13:30:57.122+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=274) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-07-27T13:30:57.126+0000] {standard_task_runner.py:63} INFO - Started process 278 to run task
+[2024-07-27T13:30:57.125+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'ETL_SofaScore_Matchday_daily', 'start', 'scheduled__2023-07-31T00:00:00+00:00', '--job-id', '298', '--raw', '--subdir', 'DAGS_FOLDER/crawl_dags.py', '--cfg-path', '/tmp/tmpa6ko8jd6']
+[2024-07-27T13:30:57.129+0000] {standard_task_runner.py:91} INFO - Job 298: Subtask start
+[2024-07-27T13:30:57.220+0000] {task_command.py:426} INFO - Running <TaskInstance: ETL_SofaScore_Matchday_daily.start scheduled__2023-07-31T00:00:00+00:00 [running]> on host fde3e54b98e9
+[2024-07-27T13:30:57.391+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='nguyenmduc2407@gmail.com' AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='ETL_SofaScore_Matchday_daily' AIRFLOW_CTX_TASK_ID='start' AIRFLOW_CTX_EXECUTION_DATE='2023-07-31T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-07-31T00:00:00+00:00'
+[2024-07-27T13:30:57.394+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-07-27T13:30:57.438+0000] {logging_mixin.py:188} INFO - Start task executed!
+[2024-07-27T13:30:57.448+0000] {python.py:237} INFO - Done. Returned value was: None
+[2024-07-27T13:30:57.452+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-07-27T13:30:57.477+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=ETL_SofaScore_Matchday_daily, task_id=start, run_id=scheduled__2023-07-31T00:00:00+00:00, execution_date=20230731T000000, start_date=20240727T133056, end_date=20240727T133057
+[2024-07-27T13:30:57.550+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-07-27T13:30:57.628+0000] {taskinstance.py:3498} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-07-27T13:30:57.635+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2024-07-27T14:18:09.532+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-07-27T14:18:09.612+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: ETL_SofaScore_Matchday_daily.start scheduled__2023-07-31T00:00:00+00:00 [queued]>
+[2024-07-27T14:18:09.653+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: ETL_SofaScore_Matchday_daily.start scheduled__2023-07-31T00:00:00+00:00 [queued]>
+[2024-07-27T14:18:09.661+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 2
+[2024-07-27T14:18:10.164+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): start> on 2023-07-31 00:00:00+00:00
+[2024-07-27T14:18:10.173+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=899) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-07-27T14:18:10.177+0000] {standard_task_runner.py:63} INFO - Started process 903 to run task
+[2024-07-27T14:18:10.176+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'ETL_SofaScore_Matchday_daily', 'start', 'scheduled__2023-07-31T00:00:00+00:00', '--job-id', '305', '--raw', '--subdir', 'DAGS_FOLDER/crawl_dags.py', '--cfg-path', '/tmp/tmpmue7txqo']
+[2024-07-27T14:18:10.181+0000] {standard_task_runner.py:91} INFO - Job 305: Subtask start
+[2024-07-27T14:18:10.319+0000] {task_command.py:426} INFO - Running <TaskInstance: ETL_SofaScore_Matchday_daily.start scheduled__2023-07-31T00:00:00+00:00 [running]> on host fde3e54b98e9
+[2024-07-27T14:18:10.512+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='nguyenmduc2407@gmail.com' AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='ETL_SofaScore_Matchday_daily' AIRFLOW_CTX_TASK_ID='start' AIRFLOW_CTX_EXECUTION_DATE='2023-07-31T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-07-31T00:00:00+00:00'
+[2024-07-27T14:18:10.521+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-07-27T14:18:10.568+0000] {logging_mixin.py:188} INFO - Start task executed!
+[2024-07-27T14:18:10.576+0000] {python.py:237} INFO - Done. Returned value was: None
+[2024-07-27T14:18:10.578+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-07-27T14:18:10.593+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=ETL_SofaScore_Matchday_daily, task_id=start, run_id=scheduled__2023-07-31T00:00:00+00:00, execution_date=20230731T000000, start_date=20240727T141809, end_date=20240727T141810
+[2024-07-27T14:18:10.639+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-07-27T14:18:10.698+0000] {taskinstance.py:3498} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2024-07-27T14:18:10.712+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2024-07-27T15:19:51.307+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-07-27T15:19:51.337+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: ETL_SofaScore_Matchday_daily.start scheduled__2023-07-31T00:00:00+00:00 [queued]>
+[2024-07-27T15:19:51.349+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: ETL_SofaScore_Matchday_daily.start scheduled__2023-07-31T00:00:00+00:00 [queued]>
+[2024-07-27T15:19:51.349+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 2
+[2024-07-27T15:19:51.529+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): start> on 2023-07-31 00:00:00+00:00
+[2024-07-27T15:19:51.536+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=1755) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-07-27T15:19:51.538+0000] {standard_task_runner.py:63} INFO - Started process 1759 to run task
+[2024-07-27T15:19:51.537+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'ETL_SofaScore_Matchday_daily', 'start', 'scheduled__2023-07-31T00:00:00+00:00', '--job-id', '329', '--raw', '--subdir', 'DAGS_FOLDER/crawl_dags.py', '--cfg-path', '/tmp/tmp3w3dhfxx']
+[2024-07-27T15:19:51.539+0000] {standard_task_runner.py:91} INFO - Job 329: Subtask start
+[2024-07-27T15:19:51.585+0000] {task_command.py:426} INFO - Running <TaskInstance: ETL_SofaScore_Matchday_daily.start scheduled__2023-07-31T00:00:00+00:00 [running]> on host fde3e54b98e9
+[2024-07-27T15:19:51.671+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='nguyenmduc2407@gmail.com' AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='ETL_SofaScore_Matchday_daily' AIRFLOW_CTX_TASK_ID='start' AIRFLOW_CTX_EXECUTION_DATE='2023-07-31T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-07-31T00:00:00+00:00'
+[2024-07-27T15:19:51.672+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-07-27T15:19:51.686+0000] {logging_mixin.py:188} INFO - Start task executed!
+[2024-07-27T15:19:51.686+0000] {python.py:237} INFO - Done. Returned value was: None
+[2024-07-27T15:19:51.687+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-07-27T15:19:51.697+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=ETL_SofaScore_Matchday_daily, task_id=start, run_id=scheduled__2023-07-31T00:00:00+00:00, execution_date=20230731T000000, start_date=20240727T151951, end_date=20240727T151951
+[2024-07-27T15:19:51.753+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-07-27T15:19:51.778+0000] {taskinstance.py:3498} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2024-07-27T15:19:51.782+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2024-07-27T15:50:11.116+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-07-27T15:50:11.159+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: ETL_SofaScore_Matchday_daily.start scheduled__2023-07-31T00:00:00+00:00 [queued]>
+[2024-07-27T15:50:11.178+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: ETL_SofaScore_Matchday_daily.start scheduled__2023-07-31T00:00:00+00:00 [queued]>
+[2024-07-27T15:50:11.200+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 2
+[2024-07-27T15:50:11.608+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): start> on 2023-07-31 00:00:00+00:00
+[2024-07-27T15:50:11.619+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=2209) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-07-27T15:50:11.622+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'ETL_SofaScore_Matchday_daily', 'start', 'scheduled__2023-07-31T00:00:00+00:00', '--job-id', '351', '--raw', '--subdir', 'DAGS_FOLDER/crawl_dags.py', '--cfg-path', '/tmp/tmplw0z_eys']
+[2024-07-27T15:50:11.627+0000] {standard_task_runner.py:63} INFO - Started process 2213 to run task
+[2024-07-27T15:50:11.629+0000] {standard_task_runner.py:91} INFO - Job 351: Subtask start
+[2024-07-27T15:50:11.725+0000] {task_command.py:426} INFO - Running <TaskInstance: ETL_SofaScore_Matchday_daily.start scheduled__2023-07-31T00:00:00+00:00 [running]> on host fde3e54b98e9
+[2024-07-27T15:50:11.877+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='nguyenmduc2407@gmail.com' AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='ETL_SofaScore_Matchday_daily' AIRFLOW_CTX_TASK_ID='start' AIRFLOW_CTX_EXECUTION_DATE='2023-07-31T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-07-31T00:00:00+00:00'
+[2024-07-27T15:50:11.879+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-07-27T15:50:11.905+0000] {logging_mixin.py:188} INFO - Start task executed!
+[2024-07-27T15:50:11.906+0000] {python.py:237} INFO - Done. Returned value was: None
+[2024-07-27T15:50:11.908+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-07-27T15:50:11.923+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=ETL_SofaScore_Matchday_daily, task_id=start, run_id=scheduled__2023-07-31T00:00:00+00:00, execution_date=20230731T000000, start_date=20240727T155011, end_date=20240727T155011
+[2024-07-27T15:50:11.965+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-07-27T15:50:12.011+0000] {taskinstance.py:3498} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2024-07-27T15:50:12.017+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2024-07-27T16:26:43.416+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-07-27T16:26:43.509+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: ETL_SofaScore_Matchday_daily.start scheduled__2023-07-31T00:00:00+00:00 [queued]>
+[2024-07-27T16:26:43.559+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: ETL_SofaScore_Matchday_daily.start scheduled__2023-07-31T00:00:00+00:00 [queued]>
+[2024-07-27T16:26:43.569+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 2
+[2024-07-27T16:26:43.966+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): start> on 2023-07-31 00:00:00+00:00
+[2024-07-27T16:26:43.976+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=2712) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-07-27T16:26:43.978+0000] {standard_task_runner.py:63} INFO - Started process 2716 to run task
+[2024-07-27T16:26:43.978+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'ETL_SofaScore_Matchday_daily', 'start', 'scheduled__2023-07-31T00:00:00+00:00', '--job-id', '364', '--raw', '--subdir', 'DAGS_FOLDER/crawl_dags.py', '--cfg-path', '/tmp/tmpol2l4uae']
+[2024-07-27T16:26:43.981+0000] {standard_task_runner.py:91} INFO - Job 364: Subtask start
+[2024-07-27T16:26:44.053+0000] {task_command.py:426} INFO - Running <TaskInstance: ETL_SofaScore_Matchday_daily.start scheduled__2023-07-31T00:00:00+00:00 [running]> on host fde3e54b98e9
+[2024-07-27T16:26:44.204+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='nguyenmduc2407@gmail.com' AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='ETL_SofaScore_Matchday_daily' AIRFLOW_CTX_TASK_ID='start' AIRFLOW_CTX_EXECUTION_DATE='2023-07-31T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-07-31T00:00:00+00:00'
+[2024-07-27T16:26:44.208+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-07-27T16:26:44.240+0000] {logging_mixin.py:188} INFO - Start task executed!
+[2024-07-27T16:26:44.241+0000] {python.py:237} INFO - Done. Returned value was: None
+[2024-07-27T16:26:44.242+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-07-27T16:26:44.265+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=ETL_SofaScore_Matchday_daily, task_id=start, run_id=scheduled__2023-07-31T00:00:00+00:00, execution_date=20230731T000000, start_date=20240727T162643, end_date=20240727T162644
+[2024-07-27T16:26:44.314+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-07-27T16:26:44.329+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2024-07-27T16:37:23.629+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-07-27T16:37:23.660+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: ETL_SofaScore_Matchday_daily.start scheduled__2023-07-31T00:00:00+00:00 [queued]>
+[2024-07-27T16:37:23.672+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: ETL_SofaScore_Matchday_daily.start scheduled__2023-07-31T00:00:00+00:00 [queued]>
+[2024-07-27T16:37:23.673+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 2
+[2024-07-27T16:37:23.868+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): start> on 2023-07-31 00:00:00+00:00
+[2024-07-27T16:37:23.876+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=2886) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-07-27T16:37:23.878+0000] {standard_task_runner.py:63} INFO - Started process 2897 to run task
+[2024-07-27T16:37:23.877+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'ETL_SofaScore_Matchday_daily', 'start', 'scheduled__2023-07-31T00:00:00+00:00', '--job-id', '377', '--raw', '--subdir', 'DAGS_FOLDER/crawl_dags.py', '--cfg-path', '/tmp/tmp5w35padc']
+[2024-07-27T16:37:23.880+0000] {standard_task_runner.py:91} INFO - Job 377: Subtask start
+[2024-07-27T16:37:23.935+0000] {task_command.py:426} INFO - Running <TaskInstance: ETL_SofaScore_Matchday_daily.start scheduled__2023-07-31T00:00:00+00:00 [running]> on host fde3e54b98e9
+[2024-07-27T16:37:24.021+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='nguyenmduc2407@gmail.com' AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='ETL_SofaScore_Matchday_daily' AIRFLOW_CTX_TASK_ID='start' AIRFLOW_CTX_EXECUTION_DATE='2023-07-31T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-07-31T00:00:00+00:00'
+[2024-07-27T16:37:24.023+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-07-27T16:37:24.039+0000] {logging_mixin.py:188} INFO - Start task executed!
+[2024-07-27T16:37:24.039+0000] {python.py:237} INFO - Done. Returned value was: None
+[2024-07-27T16:37:24.040+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-07-27T16:37:24.051+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=ETL_SofaScore_Matchday_daily, task_id=start, run_id=scheduled__2023-07-31T00:00:00+00:00, execution_date=20230731T000000, start_date=20240727T163723, end_date=20240727T163724
+[2024-07-27T16:37:24.094+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-07-27T16:37:24.106+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2024-07-27T16:42:55.938+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-07-27T16:42:55.975+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: ETL_SofaScore_Matchday_daily.start scheduled__2023-07-31T00:00:00+00:00 [queued]>
+[2024-07-27T16:42:55.991+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: ETL_SofaScore_Matchday_daily.start scheduled__2023-07-31T00:00:00+00:00 [queued]>
+[2024-07-27T16:42:55.992+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 2
+[2024-07-27T16:42:56.276+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): start> on 2023-07-31 00:00:00+00:00
+[2024-07-27T16:42:56.292+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=2990) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-07-27T16:42:56.297+0000] {standard_task_runner.py:63} INFO - Started process 3002 to run task
+[2024-07-27T16:42:56.298+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'ETL_SofaScore_Matchday_daily', 'start', 'scheduled__2023-07-31T00:00:00+00:00', '--job-id', '388', '--raw', '--subdir', 'DAGS_FOLDER/crawl_dags.py', '--cfg-path', '/tmp/tmp0nda8mo3']
+[2024-07-27T16:42:56.307+0000] {standard_task_runner.py:91} INFO - Job 388: Subtask start
+[2024-07-27T16:42:56.422+0000] {task_command.py:426} INFO - Running <TaskInstance: ETL_SofaScore_Matchday_daily.start scheduled__2023-07-31T00:00:00+00:00 [running]> on host fde3e54b98e9
+[2024-07-27T16:42:56.569+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='nguyenmduc2407@gmail.com' AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='ETL_SofaScore_Matchday_daily' AIRFLOW_CTX_TASK_ID='start' AIRFLOW_CTX_EXECUTION_DATE='2023-07-31T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-07-31T00:00:00+00:00'
+[2024-07-27T16:42:56.571+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-07-27T16:42:56.610+0000] {logging_mixin.py:188} INFO - Start task executed!
+[2024-07-27T16:42:56.612+0000] {python.py:237} INFO - Done. Returned value was: None
+[2024-07-27T16:42:56.614+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-07-27T16:42:56.630+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=ETL_SofaScore_Matchday_daily, task_id=start, run_id=scheduled__2023-07-31T00:00:00+00:00, execution_date=20230731T000000, start_date=20240727T164255, end_date=20240727T164256
+[2024-07-27T16:42:56.675+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-07-27T16:42:56.718+0000] {taskinstance.py:3498} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2024-07-27T16:42:56.722+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2024-07-27T16:48:21.018+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-07-27T16:48:21.043+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: ETL_SofaScore_Matchday_daily.start scheduled__2023-07-31T00:00:00+00:00 [queued]>
+[2024-07-27T16:48:21.055+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: ETL_SofaScore_Matchday_daily.start scheduled__2023-07-31T00:00:00+00:00 [queued]>
+[2024-07-27T16:48:21.056+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 2
+[2024-07-27T16:48:21.243+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): start> on 2023-07-31 00:00:00+00:00
+[2024-07-27T16:48:21.255+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=3115) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-07-27T16:48:21.259+0000] {standard_task_runner.py:63} INFO - Started process 3119 to run task
+[2024-07-27T16:48:21.258+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'ETL_SofaScore_Matchday_daily', 'start', 'scheduled__2023-07-31T00:00:00+00:00', '--job-id', '406', '--raw', '--subdir', 'DAGS_FOLDER/crawl_dags.py', '--cfg-path', '/tmp/tmpxynsayf7']
+[2024-07-27T16:48:21.262+0000] {standard_task_runner.py:91} INFO - Job 406: Subtask start
+[2024-07-27T16:48:21.353+0000] {task_command.py:426} INFO - Running <TaskInstance: ETL_SofaScore_Matchday_daily.start scheduled__2023-07-31T00:00:00+00:00 [running]> on host fde3e54b98e9
+[2024-07-27T16:48:21.628+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='nguyenmduc2407@gmail.com' AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='ETL_SofaScore_Matchday_daily' AIRFLOW_CTX_TASK_ID='start' AIRFLOW_CTX_EXECUTION_DATE='2023-07-31T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-07-31T00:00:00+00:00'
+[2024-07-27T16:48:21.633+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-07-27T16:48:21.699+0000] {logging_mixin.py:188} INFO - Start task executed!
+[2024-07-27T16:48:21.708+0000] {python.py:237} INFO - Done. Returned value was: None
+[2024-07-27T16:48:21.713+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-07-27T16:48:21.744+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=ETL_SofaScore_Matchday_daily, task_id=start, run_id=scheduled__2023-07-31T00:00:00+00:00, execution_date=20230731T000000, start_date=20240727T164821, end_date=20240727T164821
+[2024-07-27T16:48:21.809+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-07-27T16:48:21.867+0000] {taskinstance.py:3498} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2024-07-27T16:48:21.874+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2024-07-27T17:24:53.467+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-07-27T17:24:53.502+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: ETL_SofaScore_Matchday_daily.start scheduled__2023-07-31T00:00:00+00:00 [queued]>
+[2024-07-27T17:24:53.518+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: ETL_SofaScore_Matchday_daily.start scheduled__2023-07-31T00:00:00+00:00 [queued]>
+[2024-07-27T17:24:53.518+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 2
+[2024-07-27T17:24:53.941+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): start> on 2023-07-31 00:00:00+00:00
+[2024-07-27T17:24:53.959+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=3599) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-07-27T17:24:53.969+0000] {standard_task_runner.py:63} INFO - Started process 3603 to run task
+[2024-07-27T17:24:53.968+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'ETL_SofaScore_Matchday_daily', 'start', 'scheduled__2023-07-31T00:00:00+00:00', '--job-id', '410', '--raw', '--subdir', 'DAGS_FOLDER/crawl_dags.py', '--cfg-path', '/tmp/tmpavehk_p9']
+[2024-07-27T17:24:53.976+0000] {standard_task_runner.py:91} INFO - Job 410: Subtask start
+[2024-07-27T17:24:54.156+0000] {task_command.py:426} INFO - Running <TaskInstance: ETL_SofaScore_Matchday_daily.start scheduled__2023-07-31T00:00:00+00:00 [running]> on host fde3e54b98e9
+[2024-07-27T17:24:54.398+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='nguyenmduc2407@gmail.com' AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='ETL_SofaScore_Matchday_daily' AIRFLOW_CTX_TASK_ID='start' AIRFLOW_CTX_EXECUTION_DATE='2023-07-31T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-07-31T00:00:00+00:00'
+[2024-07-27T17:24:54.402+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-07-27T17:24:54.460+0000] {logging_mixin.py:188} INFO - Start task executed!
+[2024-07-27T17:24:54.462+0000] {python.py:237} INFO - Done. Returned value was: None
+[2024-07-27T17:24:54.464+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-07-27T17:24:54.477+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=ETL_SofaScore_Matchday_daily, task_id=start, run_id=scheduled__2023-07-31T00:00:00+00:00, execution_date=20230731T000000, start_date=20240727T172453, end_date=20240727T172454
+[2024-07-27T17:24:54.551+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-07-27T17:24:54.635+0000] {taskinstance.py:3498} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2024-07-27T17:24:54.647+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

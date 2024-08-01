@@ -1,0 +1,60 @@
+[2024-07-27T12:33:57.561+0000] {processor.py:161} INFO - Started process (PID=39) to work on /opt/airflow/dags/crawl_team_dags.py
+[2024-07-27T12:33:57.564+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_team_dags.py for tasks to queue
+[2024-07-27T12:33:57.578+0000] {logging_mixin.py:188} INFO - [2024-07-27T12:33:57.577+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_team_dags.py
+[2024-07-27T12:33:59.064+0000] {logging_mixin.py:188} INFO - [2024-07-27T12:33:59.053+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/crawl_team_dags.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/crawl_team_dags.py", line 435, in <module>
+    step_start >> crawl_data >> [crawl_shotmap, crawl_match_event, crawl_match_incidents,
+                                 ^^^^^^^^^^^^^
+NameError: name 'crawl_shotmap' is not defined
+[2024-07-27T12:33:59.073+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/crawl_team_dags.py
+[2024-07-27T12:33:59.151+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_team_dags.py took 1.610 seconds
+[2024-07-27T12:34:29.232+0000] {processor.py:161} INFO - Started process (PID=51) to work on /opt/airflow/dags/crawl_team_dags.py
+[2024-07-27T12:34:29.233+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_team_dags.py for tasks to queue
+[2024-07-27T12:34:29.236+0000] {logging_mixin.py:188} INFO - [2024-07-27T12:34:29.235+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_team_dags.py
+[2024-07-27T12:34:29.701+0000] {logging_mixin.py:188} INFO - [2024-07-27T12:34:29.690+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/crawl_team_dags.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/crawl_team_dags.py", line 435, in <module>
+    step_start >> crawl_data >> [crawl_shotmap, crawl_match_event, crawl_match_incidents,
+                                 ^^^^^^^^^^^^^
+NameError: name 'crawl_shotmap' is not defined
+[2024-07-27T12:34:29.707+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/crawl_team_dags.py
+[2024-07-27T12:34:29.731+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_team_dags.py took 0.505 seconds
+[2024-07-27T12:35:00.051+0000] {processor.py:161} INFO - Started process (PID=63) to work on /opt/airflow/dags/crawl_team_dags.py
+[2024-07-27T12:35:00.054+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_team_dags.py for tasks to queue
+[2024-07-27T12:35:00.062+0000] {logging_mixin.py:188} INFO - [2024-07-27T12:35:00.061+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_team_dags.py
+[2024-07-27T12:35:00.889+0000] {logging_mixin.py:188} INFO - [2024-07-27T12:35:00.882+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/crawl_team_dags.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/crawl_team_dags.py", line 435, in <module>
+    step_start >> crawl_data >> [crawl_shotmap, crawl_match_event, crawl_match_incidents,
+                                 ^^^^^^^^^^^^^
+NameError: name 'crawl_shotmap' is not defined
+[2024-07-27T12:35:00.894+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/crawl_team_dags.py
+[2024-07-27T12:35:00.910+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_team_dags.py took 0.876 seconds
+[2024-07-27T12:35:31.262+0000] {processor.py:161} INFO - Started process (PID=81) to work on /opt/airflow/dags/crawl_team_dags.py
+[2024-07-27T12:35:31.263+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_team_dags.py for tasks to queue
+[2024-07-27T12:35:31.264+0000] {logging_mixin.py:188} INFO - [2024-07-27T12:35:31.264+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_team_dags.py
+[2024-07-27T12:35:31.693+0000] {logging_mixin.py:188} INFO - [2024-07-27T12:35:31.685+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/crawl_team_dags.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/crawl_team_dags.py", line 435, in <module>
+    step_start >> crawl_data >> [crawl_shotmap, crawl_match_event, crawl_match_incidents,
+                                 ^^^^^^^^^^^^^
+NameError: name 'crawl_shotmap' is not defined
+[2024-07-27T12:35:31.699+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/crawl_team_dags.py
+[2024-07-27T12:35:31.716+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_team_dags.py took 0.458 seconds
