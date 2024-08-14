@@ -28,19 +28,43 @@ class CrawlMatchInfo:
             df_matchday.rename(columns={"id": "match_id"}, inplace=True)
             df_football = df_matchday[df_matchday['tournament_category_sport_name'] == 'Football']
 
-            df_pre = pd.concat([df_football], ignore_index=True)
-            df = df_pre.rename(columns={"customId": "custom_id"})
+            df = pd.concat([df_football], ignore_index=True)
             print("Dataframe is here!!!")
             print(df)
+            list_match_id = df["match_id"].astype(str).tolist()
+            list_customId = df["customId"]
             self.export(log_name, df)
-            # list_match_id = df["match_id"].astype(str).tolist()
-            # list_customId = df["customId"]
-            # return  list_customId
 
-    def shotmap(self,date):
+            # shotmap_df = self.shotmap(list_match_id)
+            # if shotmap_df is not None:
+            #     self.export("shotmap", shotmap_df)
+            #
+            # match_event_df = self.match_event(list_customId)
+            # if match_event_df is not None:
+            #     self.export("match_event", match_event_df)
+            #
+            # match_incident_df = self.match_incident(list_match_id)
+            # if match_incident_df is not None:
+            #     self.export("match_incident", match_incident_df)
+            #
+            # match_lineups_df = self.match_lineups(list_match_id)
+            # if match_lineups_df is not None:
+            #     self.export("match_lineups", match_lineups_df)
+            #
+            # match_manager_df = self.match_manager(list_match_id)
+            # if match_manager_df is not None:
+            #     self.export("match_manager", match_manager_df)
+            #
+            # match_statistics_df = self.match_statistics(list_match_id)
+            # if match_statistics_df is not None:
+            #     self.export("match_statistics", match_statistics_df)
+            #
+            # match_summary_df = self.match_summary(list_match_id)
+            # if match_summary_df is not None:
+            #     self.export("match_summary", match_summary_df)
+
+    def shotmap(self, list_match_id):
         shotmap_data = []
-        matchday = self.read_id(date)
-        list_match_id = matchday["match_id"].astype(str).tolist()
         for match_id in list_match_id:
             url = f"https://www.sofascore.com/api/v1/event/{match_id}/shotmap"
             try:
@@ -65,14 +89,14 @@ class CrawlMatchInfo:
             df_shotmap = pd.json_normalize(shotmap_data)
             df_shotmap.rename(columns=lambda col: col.replace('.', '_'), inplace=True)
             print(df_shotmap)
-            self.export("shotmap", df_shotmap)
+            return df_shotmap
         else:
             print("No data fetched.")
+            return None
+        self.export("shotmap", df_shotmap)
 
-    def match_event(self,date):
+    def match_event(self,list_customId):
         event_data = []
-        matchday = self.read_id(date)
-        list_customId = matchday["custom_id"].astype(str).tolist()
         for customId in list_customId:
             url = f"https://www.sofascore.com/api/v1/event/{customId}/h2h/events"
             try:
@@ -82,7 +106,7 @@ class CrawlMatchInfo:
                     data = response.json()
                     for event in data['events']:
                         event_copy = event.copy()
-                        event_copy['custom_id'] = customId
+                        event_copy['customId'] = customId
                         event_copy['status_code'] = status_code
                         event_data.append(event_copy)
                 else:
@@ -97,14 +121,14 @@ class CrawlMatchInfo:
             df_match_event = pd.json_normalize(event_data)
             df_match_event.rename(columns=lambda col: col.replace('.', '_'), inplace=True)
             print(df_match_event)
-            self.export("match_event", df_match_event)
+            return df_match_event
         else:
             print("No data fetched.")
+            return None
+        self.export("match_event", df_match_event)
 
-    def match_incident(self,date):
+    def match_incident(self,list_match_id):
         match_incident_data = []
-        matchday = self.read_id(date)
-        list_match_id = matchday["match_id"].astype(str).tolist()
         for match_id in list_match_id:
             url = f"https://www.sofascore.com/api/v1/event/{match_id}/incidents"
             try:
@@ -131,14 +155,14 @@ class CrawlMatchInfo:
             df_match_incident = pd.json_normalize(match_incident_data)
             df_match_incident.rename(columns=lambda col: col.replace('.', '_'), inplace=True)
             print(df_match_incident)
-            self.export("match_incident", df_match_incident)
+            return df_match_incident
         else:
             print("No data fetched.")
+            return None
+        self.export("match_incident", df_match_incident)
 
-    def match_lineups(self,date):
+    def match_lineups(self,list_match_id):
         match_lineups_data = []
-        matchday = self.read_id(date)
-        list_match_id = matchday["match_id"].astype(str).tolist()
         for match_id in list_match_id:
             url = f"https://www.sofascore.com/api/v1/event/{match_id}/lineups"
             try:
@@ -173,15 +197,15 @@ class CrawlMatchInfo:
             df_lineups = pd.json_normalize(match_lineups_data)
             df_lineups.rename(columns=lambda col: col.replace('.', '_'), inplace=True)
             print(df_lineups)
-            self.export("match_lineups", df_lineups)
+            return df_lineups
         else:
             print("No data fetched.")
+            return None
+        self.export("match_lineups", df_lineups)
 
-    def match_manager(self,date):
+    def match_manager(self,list_match_id):
         match_managers_data = []
         match_managers_columns = None
-        matchday = self.read_id(date)
-        list_match_id = matchday["match_id"].astype(str).tolist()
         for match_id in list_match_id:
             url = f"https://www.sofascore.com/api/v1/event/{match_id}/managers"
             try:
@@ -210,14 +234,14 @@ class CrawlMatchInfo:
             df_manager = pd.json_normalize(match_managers_data, sep='_')
             df_manager.rename(columns=lambda col: col.replace('.', '_'), inplace=True)
             print(df_manager)
-            self.export("match_managers", df_manager)
+            return df_manager
         else:
             print("No data fetched.")
+            return None
+        self.export("match_manager", df_manager)
 
-    def match_statistics(self,date):
+    def match_statistics(self,list_match_id):
         match_statistics_data = []
-        matchday = self.read_id(date)
-        list_match_id = matchday["match_id"].astype(str).tolist()
         for match_id in list_match_id:
             url = f"https://www.sofascore.com/api/v1/event/{match_id}/statistics"
             try:
@@ -285,14 +309,14 @@ class CrawlMatchInfo:
         if match_statistics_data:
             df_match_statistics = pd.DataFrame(match_statistics_data)
             print(df_match_statistics)
-            self.export("match_statistics", df_match_statistics)
+            return df_match_statistics
         else:
             print("No data fetched.")
+            return None
+        self.export("match_statistics", df_match_statistics)
 
-    def match_summary(self,date):
+    def match_summary(self,list_match_id):
         match_summary_data = []
-        matchday = self.read_id(date)
-        list_match_id = matchday["match_id"].astype(str).tolist()
         for match_id in list_match_id:
             url = f"https://www.sofascore.com/api/v1/event/{match_id}/best-players/summary"
             try:
@@ -338,31 +362,11 @@ class CrawlMatchInfo:
             df_summary = pd.json_normalize(match_summary_data, sep='_')
             df_summary.rename(columns=lambda col: col.replace('.', '_'), inplace=True)
             print(df_summary)
-            self.export("match_summary", df_summary)
+            return df_summary
         else:
             print("No data fetched.")
-
-    def read_id(self,date):
-        DATABASE_TYPE = 'postgresql'
-        DBAPI = 'psycopg2'
-        ENDPOINT = 'host.docker.internal'
-        USER = 'postgres'
-        PASSWORD = 'ducnm7'
-        PORT = 5432
-        DATABASE = 'postgres'
-
-        connection_string = f"{DATABASE_TYPE}+{DBAPI}://{USER}:{PASSWORD}@{ENDPOINT}:{PORT}/{DATABASE}"
-        engine = create_engine(connection_string)
-
-        query = """
-        SELECT matchday.match_id, matchday.custom_id, matchday.ds 
-        FROM matchday
-        """
-        with engine.connect() as connection:
-            df_matchday_temp = pd.read_sql_query(query, connection)
-            df = df_matchday_temp[df_matchday_temp['ds'] == date]
-
-        return df
+            return None
+        self.export("match_summary", df_summary)
 
     def export(self, log_name, df):
         DATABASE_TYPE = 'postgresql'
@@ -387,46 +391,38 @@ def start_task_callable():
 def end_task_callable():
     print("End task executed!")
 
-def crawl_match_day(**kwargs):
-    date = kwargs['date']
-    crawler = CrawlMatchInfo(date)
-    return crawler.fetch_teamday()
 
-def crawl_shotmap(**kwargs):
-    date = kwargs['date']
+def crawl_match_day(date):
     crawler = CrawlMatchInfo(date)
-    return crawler.shotmap(date)
+    crawler.fetch_teamday()
 
-def crawl_match_event(**kwargs):
-    date = kwargs['date']
+def crawl_match_event(date):
     crawler = CrawlMatchInfo(date)
-    return crawler.match_event(date)
+    crawler.match_event(date)
 
-def crawl_match_summary(**kwargs):
-    date = kwargs['date']
+def crawl_match_incident(date):
     crawler = CrawlMatchInfo(date)
-    return crawler.match_summary(date)
+    crawler.match_incident(date)
 
-def crawl_match_lineups(**kwargs):
-    date = kwargs['date']
+def crawl_match_lineups(date):
     crawler = CrawlMatchInfo(date)
-    return crawler.match_lineups(date)
+    crawler.match_lineups(date)
 
-def crawl_match_incident(**kwargs):
-    date = kwargs['date']
+def crawl_match_manager(date):
     crawler = CrawlMatchInfo(date)
-    return crawler.match_incident(date)
+    crawler.match_manager(date)
 
-def crawl_match_manager(**kwargs):
-    date = kwargs['date']
+def crawl_match_statistics(date):
     crawler = CrawlMatchInfo(date)
-    return crawler.match_manager(date)
+    crawler.match_statistics(date)
 
-def crawl_match_statistics(**kwargs):
-    date = kwargs['date']
+def crawl_match_summary(date):
     crawler = CrawlMatchInfo(date)
-    return crawler.match_statistics(date)
+    crawler.match_summary(date)
 
+def crawl_shotmap(date):
+    crawler = CrawlMatchInfo(date)
+    crawler.shotmap(date)
 
 def task_start(dag):
     operator = PythonOperator(
@@ -456,7 +452,7 @@ dag = DAG(
     description="Crawl Match info in last day",
     schedule_interval=timedelta(days=1),
     start_date=datetime(2023, 7, 31),
-    end_date=datetime(2023, 8, 2),
+    end_date=datetime(2023, 9, 1),
     max_active_runs=2,
     tags=["ducnm7"]
 )
@@ -466,70 +462,69 @@ step_start = task_start(dag)
 # Final: end dag
 step_end = task_end(dag)
 
-crawl_match_day_task = PythonOperator(
+crawl_match_day = PythonOperator(
     task_id="crawl_data",
     python_callable=crawl_match_day,
-    provide_context=True,
     op_kwargs={"date": "{{ ds }}"},
     dag=dag
 )
 
-crawl_shotmap_task = PythonOperator(
+crawl_shotmap = PythonOperator(
     task_id="crawl_shotmap",
     python_callable=crawl_shotmap,
-    provide_context=True,
     op_kwargs={"date": "{{ ds }}"},
     dag=dag
 )
 
-crawl_match_event_task = PythonOperator(
+crawl_shotmap = PythonOperator(
+    task_id="crawl_shotmap",
+    python_callable=crawl_shotmap,
+    op_kwargs={"date": "{{ ds }}"},
+    dag=dag
+)
+
+crawl_match_event = PythonOperator(
     task_id="crawl_match_event",
     python_callable=crawl_match_event,
-    provide_context=True,
     op_kwargs={"date": "{{ ds }}"},
     dag=dag
 )
 
-crawl_match_summary_task = PythonOperator(
+crawl_match_summary = PythonOperator(
     task_id="crawl_match_summary",
     python_callable=crawl_match_summary,
-    provide_context=True,
     op_kwargs={"date": "{{ ds }}"},
     dag=dag
 )
 
-crawl_match_lineups_task = PythonOperator(
+crawl_match_lineups = PythonOperator(
     task_id="crawl_match_lineups",
     python_callable=crawl_match_lineups,
-    provide_context=True,
     op_kwargs={"date": "{{ ds }}"},
     dag=dag
 )
 
-crawl_match_manager_task = PythonOperator(
+crawl_match_manager = PythonOperator(
     task_id="crawl_match_manager",
     python_callable=crawl_match_manager,
-    provide_context=True,
     op_kwargs={"date": "{{ ds }}"},
     dag=dag
 )
 
-crawl_match_incident_task = PythonOperator(
+crawl_match_incident = PythonOperator(
     task_id="crawl_match_incident",
     python_callable=crawl_match_incident,
-    provide_context=True,
     op_kwargs={"date": "{{ ds }}"},
     dag=dag
 )
 
-crawl_match_statistics_task = PythonOperator(
+crawl_match_statistics = PythonOperator(
     task_id="crawl_match_statistics",
     python_callable=crawl_match_statistics,
-    provide_context=True,
     op_kwargs={"date": "{{ ds }}"},
     dag=dag
 )
 
-step_start >> crawl_match_day_task >> [crawl_shotmap_task, crawl_match_event_task, crawl_match_summary_task,
-                                       crawl_match_lineups_task, crawl_match_manager_task, crawl_match_incident_task,
-                                       crawl_match_statistics_task] >> step_end
+(step_start >> crawl_match_day >> [crawl_shotmap, crawl_match_event, crawl_match_summary, crawl_match_lineups,
+                                   crawl_match_manager, crawl_match_incident, crawl_match_statistics] >>
+ step_end)
