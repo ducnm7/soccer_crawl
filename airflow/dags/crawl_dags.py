@@ -528,3 +528,4 @@ crawl_match_statistics = PythonOperator(
 (step_start >> crawl_match_day >> [crawl_shotmap, crawl_match_event, crawl_match_summary, crawl_match_lineups,
                                    crawl_match_manager, crawl_match_incident, crawl_match_statistics] >>
  step_end)
+#done
